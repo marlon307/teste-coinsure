@@ -1,0 +1,64 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap'); */
+
+.app-header {
+  width: 100%;
+  border: 1px solid #bebebe;
+  position: fixed;
+  top: 0;
+  background: #fff;
+}
+
+.contheader {
+  max-width: 1400px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+:is(.logomn a, .logmn) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  padding: 0 18px;
+}
+
+.logomn svg {
+  width: 50px;
+  height: 50px;
+}
+
+.logomn a {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #333;
+}
+
+.logmn a {
+  color: #333;
+  text-decoration: none;
+}
+
+.login {
+  padding: 1em;
+  transition: 0.2s ease;
+}
+
+.login:hover {
+  padding: 1em;
+  color: #fda008;
+}
+
+.register {
+  padding: 1em;
+  background: #ffdd0b;
+  border-radius: 16px;
+  transition: 0.2s ease;
+}
+
+.register:hover {
+  background: #faea85;
+}
