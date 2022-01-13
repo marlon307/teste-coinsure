@@ -1,9 +1,13 @@
 import React from 'react';
 import './button.css';
 
-function Button({ title }) {
+function Button({ title, execFunction }) {
   return (
-    <button className="button" type="button">
+    <button
+      className="button"
+      type="button"
+      onClick={ execFunction }
+    >
       { title }
     </button>
   )
