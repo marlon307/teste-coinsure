@@ -36,6 +36,7 @@ function Login() {
           name="email"
           placeholder="Email"
           execFunction={ handleChange }
+          autoComplete="email"
         />
         <InputText
           type="password"
@@ -43,6 +44,7 @@ function Login() {
           name="psw"
           placeholder="Senha"
           execFunction={ handleChange }
+          autoComplete="password"
         />
         <Button title="Logar" execFunction={ handleClick } />
       </form>
