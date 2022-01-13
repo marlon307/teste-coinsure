@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import Button from './components/ComponentsForm/Button'
-import InputText from './components/ComponentsForm/InputText'
+import React, { useState } from 'react';
+import Button from './components/ComponentsForm/Button';
+import InputText from './components/ComponentsForm/InputText';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const navigate = useNavigate()
   const [stateRegister, setStateRegister] = useState({
     name: '',
     email: '',
@@ -23,7 +25,7 @@ function Register() {
     if (validEmail.test(stateRegister.email)
       && stateRegister.psw.length >= 8
       && stateRegister.name.length >= 8) {
-      console.log('ok');
+      navigate('/user');
     }
   }
 

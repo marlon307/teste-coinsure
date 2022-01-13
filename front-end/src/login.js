@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Button from './components/ComponentsForm/Button';
+import { useNavigate } from 'react-router-dom';
 import InputText from './components/ComponentsForm/InputText';
-import './styles/login.css'
+import './styles/login.css';
 
 function Login() {
-
+  const navigate = useNavigate();
   const [statelogin, setStateLogin] = useState({
     email: '',
     psw: ''
@@ -22,7 +23,7 @@ function Login() {
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm;
 
     if (validEmail.test(statelogin.email) && statelogin.psw.length >= 8) {
-      console.log('ok');
+      navigate('/user');
     }
   }
 
