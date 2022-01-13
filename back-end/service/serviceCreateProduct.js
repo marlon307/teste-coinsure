@@ -1,6 +1,6 @@
 const creatNewProduct = require('../models/modelcreatNewProduct')
 
-async function serviceRegisterUser(req, res) {
+async function serviceCreateProduct(req, res) {
   const { url, title, price, description } = req.body;
 
   const result = await creatNewProduct({ url, title, price, description });
@@ -14,4 +14,4 @@ async function serviceRegisterUser(req, res) {
   return res.status(result.status).json(result);
 }
 
-module.exports = serviceRegisterUser;
+module.exports = serviceCreateProduct;

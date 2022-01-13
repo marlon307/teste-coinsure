@@ -2,23 +2,30 @@ import React, { useState, useEffect } from 'react';
 import Button from './components/ComponentsForm/Button';
 import Input from './components/ComponentsForm/Input';
 import { useNavigate } from 'react-router-dom';
+import serviceCreateProduct from './service/serviceCreateProduct'
 import './styles/user.css';
 
 function User() {
   const navigate = useNavigate();
   const [statecadProd, setStatecadProd] = useState({
-    file: '',
+    url: '',
     title: '',
-    price: '',
-    desc: ''
+    price: 0,
+    description: '',
   })
 
   function handleChange({ target }) {
     const { name, value } = target;
+    console.log(statecadProd.description);
     setStatecadProd({
       ...statecadProd,
       [name]: value
     });
+  }
+
+  async function handleClick() {
+    const { url, title, price, description } = statecadProd;
+    await serviceCreateProduct(url, title, price, description);
   }
 
   useEffect(() => {
@@ -32,11 +39,11 @@ function User() {
     <div className="style-user">
       <h3>Bem vindo: UserName</h3>
       <Input
-        type="file"
+        type="text"
         id="file"
-        name="file"
+        name="url"
         autoComplete="off"
-        placeholder="Escola uma imagem"
+        placeholder="Insira uma url de imagem"
         execFunction={ handleChange }
       />
       <Input
@@ -57,12 +64,13 @@ function User() {
       />
       <textarea
         className="desc"
-        name="desc"
+        name="description"
         id="desc"
         cols="57" rows="10"
+        onChange={ handleChange }
         placeholder="Digite aqui a descrição do produto."
       />
-      <Button title="Adicionar produto" />
+      <Button title="Adicionar produto" execFunction={ handleClick } />
     </div>
   )
 }
