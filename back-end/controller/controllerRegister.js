@@ -1,13 +1,13 @@
 const { checkname, checkpsw, checkemail } = require('../middleware');
 
 function controllerRegister(req, res, next) {
-  const { name, email, psw } = req.body;
+  const { name, email, password } = req.body;
 
-  if (!checkname(name) && !checkpsw(psw) && !checkemail(email)) {
+  if (!checkname(name) || !checkpsw(password) || !checkemail(email)) {
     return res.status(404).json({
       status: 404,
-      message: 'Pending information.'
-    })
+      message: 'Pending information.',
+    });
   }
   next()
 }

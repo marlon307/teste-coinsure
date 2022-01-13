@@ -1,18 +1,15 @@
-const { checkname, checkpsw, checkemail } = require('../middleware')
+const { checkpsw, checkemail } = require('../middleware')
 
 function controllerLogin(req, res, next) {
-  const { name, email, psw } = req.body;
+  const { email, password } = req.body;
 
-  if (checkemail(email) && checkpsw(psw)) {
-    return res.status(200).json({
-      email,
-      psw
-    })
+  if (!checkemail(email) || !checkpsw(password)) {
+    return res.status(404).json({
+      status: 404,
+      message: 'Pending information.',
+    });
   }
-  return res.status(404).json({
-    status: 404,
-    message: 'Pending information.'
-  })
+  next();
 }
 
 module.exports = controllerLogin;
