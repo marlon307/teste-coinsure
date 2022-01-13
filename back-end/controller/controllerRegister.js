@@ -5,7 +5,6 @@ async function controllerRegister(req, res, next) {
   const { name, email, password } = req.body;
 
   const resultEamil = await serviceCkeckEmail(email);
-
   if (resultEamil) {
     return res.status(404).json(resultEamil);
   }
