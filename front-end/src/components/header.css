@@ -17,7 +17,7 @@
   margin: 0 auto;
 }
 
-:is(.logomn a, .logmn) {
+:is(.logomn span, .logmn) {
   display: flex;
   align-items: center;
   justify-content: center;

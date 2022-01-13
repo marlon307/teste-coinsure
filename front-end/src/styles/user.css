@@ -1,0 +1,15 @@
+.style-user {
+  max-width: 500px;
+  margin: 6em auto;
+}
+
+.style-user h3 {
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.desc {
+  border: 1px solid #333;
+  border-radius: 16px;
+  margin-bottom: 1em;
+}
