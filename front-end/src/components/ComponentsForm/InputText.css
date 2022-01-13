@@ -1,0 +1,11 @@
+.input {
+  width: 100%;
+}
+
+.input input {
+  width: 100%;
+  border-radius: 8px;
+  border-color: transparent;
+  padding: 0.8em 0.6em;
+  border: 1px solid #333;
+}

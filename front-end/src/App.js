@@ -1,4 +1,5 @@
 import './App.css';
+import InputText from './components/ComponentsForm/InputText';
 
 function App() {
   return (
@@ -79,6 +80,7 @@ function App() {
             <p>Item para pescas desde o peixe pesado ate aos mais leves</p>
           </div>
         </div>
+        <InputText />
       </main>
     </div>
   );
