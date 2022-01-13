@@ -5,7 +5,7 @@ import InputText from './components/ComponentsForm/Input';
 import serviceLoginUser from './service/serviceLoginUser';
 import './styles/login.css';
 
-function Login() {
+function Login({ execFunction }) {
   const navigate = useNavigate();
   const [statelogin, setStateLogin] = useState({
     email: '',
@@ -26,6 +26,11 @@ function Login() {
     if (validEmail.test(statelogin.email) && statelogin.password.length >= 8) {
       const fetchLogin = await serviceLoginUser(statelogin.email, statelogin.password);
       if (fetchLogin.status === 200) {
+
+        localStorage.setItem('fishstore', JSON.stringify({
+          logged: true,
+        }));
+        execFunction(true);
         navigate('/user');
       }
     }

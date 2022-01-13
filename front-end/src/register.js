@@ -4,8 +4,8 @@ import Input from './components/ComponentsForm/Input';
 import { useNavigate } from 'react-router-dom';
 import serviceRegisterUser from './service/serviceRegisterUser';
 
-function Register() {
-  const navigate = useNavigate()
+function Register({ execFunction }) {
+  const navigate = useNavigate();
   const [stateRegister, setStateRegister] = useState({
     name: '',
     email: '',
@@ -27,6 +27,12 @@ function Register() {
 
       const fetchregisterUser = await serviceRegisterUser(name, email, password);
       if (fetchregisterUser.status === 200) {
+
+        localStorage.setItem('fishstore', JSON.stringify({
+          logged: true,
+        }));
+
+        execFunction(true);
         navigate('/user');
       }
     }
