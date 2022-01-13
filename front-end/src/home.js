@@ -1,8 +1,7 @@
 import React from 'react'
-import './App.css';
-import InputText from './components/ComponentsForm/InputText'
+import './styles/App.css';
 
-function main() {
+function home() {
   return (
     <main>
       <div className="info-store">
@@ -80,9 +79,8 @@ function main() {
           <p>Item para pescas desde o peixe pesado ate aos mais leves</p>
         </div>
       </div>
-      <InputText />
     </main>
   )
 }
 
-export default main
+export default home;

@@ -1,10 +1,15 @@
 import React from 'react';
 import './InputText.css'
 
-function InputText({ type, id, name }) {
+function InputText({ type, id, name, placeholder, }) {
   return (
-    <label for={ id } className="input">
-      <input id={ id } name={ name } type={ type } />
+    <label htmlFor={ id } className="input">
+      <input
+        id={ id }
+        name={ name }
+        type={ type }
+        placeholder={ placeholder }
+      />
     </label>
   )
 }

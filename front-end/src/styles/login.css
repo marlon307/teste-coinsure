@@ -1,0 +1,10 @@
+.style-login {
+  max-width: 300px;
+  height: 350px;
+  margin: 20vh auto;
+  padding: 1em;
+}
+
+.style-login h1 {
+  margin-bottom: 1em;
+}
