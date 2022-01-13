@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from './components/ComponentsForm/Button';
 import { useNavigate } from 'react-router-dom';
-import InputText from './components/ComponentsForm/InputText';
+import InputText from './components/ComponentsForm/Input';
 import './styles/login.css';
 
 function Login() {

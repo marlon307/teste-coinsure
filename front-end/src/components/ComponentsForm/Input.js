@@ -1,5 +1,5 @@
 import React from 'react';
-import './InputText.css'
+import './Input.css'
 
 function InputText({ type, id, name, placeholder, execFunction, autoComplete }) {
   return (

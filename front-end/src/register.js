@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from './components/ComponentsForm/Button';
-import InputText from './components/ComponentsForm/InputText';
+import Input from './components/ComponentsForm/Input';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
@@ -33,7 +33,7 @@ function Register() {
     <div className="style-login">
       <h1>Registrar-se</h1>
       <form autoComplete="off">
-        <InputText
+        <Input
           type="text"
           id="name"
           name="name"
@@ -41,7 +41,7 @@ function Register() {
           placeholder="Nome"
           execFunction={ handleChange }
         />
-        <InputText
+        <Input
           type="email"
           id="email"
           name="email"
@@ -49,7 +49,7 @@ function Register() {
           autoComplete="off"
           execFunction={ handleChange }
         />
-        <InputText
+        <Input
           type="password"
           id="psw" name="psw"
           autoComplete="off"
