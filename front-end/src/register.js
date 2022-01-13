@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Button from './components/ComponentsForm/Button';
 import Input from './components/ComponentsForm/Input';
 import { useNavigate } from 'react-router-dom';
+import serviceRegisterUser from './service/serviceRegisterUser';
 
 function Register() {
   const navigate = useNavigate()
   const [stateRegister, setStateRegister] = useState({
     name: '',
     email: '',
-    psw: ''
+    password: ''
   });
 
   function handleChange({ target }) {
@@ -19,13 +20,15 @@ function Register() {
     })
   }
 
-  function handleClick() {
+  async function handleClick() {
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm;
+    const { email, password, name } = stateRegister;
+    if (validEmail.test(email) && password.length >= 8 && name.length >= 8) {
 
-    if (validEmail.test(stateRegister.email)
-      && stateRegister.psw.length >= 8
-      && stateRegister.name.length >= 8) {
-      navigate('/user');
+      const fetchregisterUser = await serviceRegisterUser(name, email, password);
+      if (fetchregisterUser.status === 200) {
+        navigate('/user');
+      }
     }
   }
 
@@ -51,7 +54,8 @@ function Register() {
         />
         <Input
           type="password"
-          id="psw" name="psw"
+          id="psw"
+          name="password"
           autoComplete="off"
           placeholder="Senha"
           execFunction={ handleChange }

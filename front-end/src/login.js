@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Button from './components/ComponentsForm/Button';
 import { useNavigate } from 'react-router-dom';
 import InputText from './components/ComponentsForm/Input';
+import serviceLoginUser from './service/serviceLoginUser';
 import './styles/login.css';
 
 function Login() {
   const navigate = useNavigate();
   const [statelogin, setStateLogin] = useState({
     email: '',
-    psw: ''
+    password: ''
   });
 
   function handleChange({ target }) {
@@ -19,11 +20,14 @@ function Login() {
     })
   }
 
-  function handleClick() {
+  async function handleClick() {
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm;
 
-    if (validEmail.test(statelogin.email) && statelogin.psw.length >= 8) {
-      navigate('/user');
+    if (validEmail.test(statelogin.email) && statelogin.password.length >= 8) {
+      const fetchLogin = await serviceLoginUser(statelogin.email, statelogin.password);
+      if (fetchLogin.status === 200) {
+        navigate('/user');
+      }
     }
   }
 
@@ -42,7 +46,7 @@ function Login() {
         <InputText
           type="password"
           id="psw"
-          name="psw"
+          name="password"
           placeholder="Senha"
           execFunction={ handleChange }
           autoComplete="password"
