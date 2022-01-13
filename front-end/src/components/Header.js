@@ -1,8 +1,18 @@
 import React from 'react';
 import './header.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function Header() {
+function Header({ stateLogin, execFunction }) {
+  const navigate = useNavigate();
+
+  function handleClick(event) {
+    event.preventDefault();
+    execFunction(false);
+    localStorage.removeItem('fishstore');
+    navigate('/');
+  }
+
   return (
     <header className="app-header">
       <div className="contheader">
@@ -46,8 +56,16 @@ function Header() {
         </div>
 
         <div className="logmn">
-          <Link to="/login" className="login">Logar</Link>
-          <Link to="/register" className="register">Registrar-se</Link>
+          { stateLogin
+            ?
+            <Link to="/" className="register" onClick={ handleClick }>
+              Sair
+            </Link>
+            :
+            <>
+              <Link to="/login" className="login">Logar</Link>
+              <Link to="/register" className="register">Registrar-se</Link>
+            </> }
         </div>
       </div>
     </header>

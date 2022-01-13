@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './components/ComponentsForm/Button';
 import Input from './components/ComponentsForm/Input';
-import './styles/user.css'
+import { useNavigate } from 'react-router-dom';
+import './styles/user.css';
 
 function User() {
+  const navigate = useNavigate();
   const [statecadProd, setStatecadProd] = useState({
     file: '',
     title: '',
@@ -16,8 +18,15 @@ function User() {
     setStatecadProd({
       ...statecadProd,
       [name]: value
-    })
+    });
   }
+
+  useEffect(() => {
+    const isLogged = JSON.parse(localStorage.getItem('fishstore'))
+    if (!isLogged) {
+      navigate('/');
+    }
+  }, [navigate]);
 
   return (
     <div className="style-user">
