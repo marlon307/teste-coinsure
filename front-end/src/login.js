@@ -8,7 +8,7 @@ function Login() {
   const navigate = useNavigate();
   const [statelogin, setStateLogin] = useState({
     email: '',
-    psw: ''
+    password: ''
   });
 
   function handleChange({ target }) {
@@ -42,7 +42,7 @@ function Login() {
         <InputText
           type="password"
           id="psw"
-          name="psw"
+          name="password"
           placeholder="Senha"
           execFunction={ handleChange }
           autoComplete="password"

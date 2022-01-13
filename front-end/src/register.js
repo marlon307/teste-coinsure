@@ -8,7 +8,7 @@ function Register() {
   const [stateRegister, setStateRegister] = useState({
     name: '',
     email: '',
-    psw: ''
+    password: ''
   });
 
   function handleChange({ target }) {
@@ -51,7 +51,8 @@ function Register() {
         />
         <Input
           type="password"
-          id="psw" name="psw"
+          id="psw"
+          name="password"
           autoComplete="off"
           placeholder="Senha"
           execFunction={ handleChange }
