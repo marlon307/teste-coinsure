@@ -5,6 +5,7 @@ const checkPrice = require('./checkPrice');
 const checkTitle = require('./checkTitle');
 const checkDescription = require('./checkDescription');
 const checkUrl = require('./checkUrl');
+const { encrypt, decrypt } = require('./encrypt');
 
 module.exports = {
   checkname,
@@ -14,4 +15,6 @@ module.exports = {
   checkTitle,
   checkDescription,
   checkUrl,
+  encrypt,
+  decrypt
 }
