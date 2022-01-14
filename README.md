@@ -19,7 +19,7 @@ Este Projeto consiste em uma plena comunicação entre frontEnd, backEnd e o ban
 
 <br>
 
-Para rodar esse projeto em sua maquina local entre na pasta <code>back-end</code> e <code>front-end</code> e rode o comando <code>yarn</code> ou <code>npm install</code>
+Para instalar as dependências projeto entre na pasta <code>back-end</code> e <code>front-end</code> e rode o comando <code>yarn</code> ou <code>npm install</code>
 
 <br>
 
