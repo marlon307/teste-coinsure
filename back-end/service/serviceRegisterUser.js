@@ -4,9 +4,6 @@ const { encrypt, decrypt } = require('../middleware/encrypt');
 async function serviceRegisterUser(req, res) {
   const { name, email, password } = req.body;
   const crypt = encrypt(password);
-  // const teste = decrypt(crypt);
-
-
 
   const result = await createUser({
     name,

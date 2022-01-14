@@ -1,11 +1,13 @@
-const checkUser = require('../models/modelCheckUser')
+const checkEmail = require('../models/modelEmailExist');
+const { decrypt } = require('../middleware/encrypt')
 
 async function serviceLoginUser(req, res) {
   const { email, password } = req.body;
 
-  const result = await checkUser({ email, password });
+  const result = await checkEmail({ email });
+  const decryptPsw = decrypt(result.password);
 
-  if (result) {
+  if (result.email === email && decryptPsw === password) {
     return res.status(200).json({
       status: 200,
       message: 'Authorization authentication'
