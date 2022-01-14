@@ -7,16 +7,19 @@ import './styles/user.css';
 
 function User() {
   const navigate = useNavigate();
+  const [fileUpload, setFileUpload] = useState({});
   const [statecadProd, setStatecadProd] = useState({
-    url: '',
     title: '',
     price: 0,
     description: '',
   })
 
+  function changeImage({ target }) {
+    setFileUpload(target.files[0])
+  }
+
   function handleChange({ target }) {
     const { name, value } = target;
-    console.log(statecadProd.description);
     setStatecadProd({
       ...statecadProd,
       [name]: value
@@ -24,8 +27,12 @@ function User() {
   }
 
   async function handleClick() {
-    const { url, title, price, description } = statecadProd;
-    await serviceCreateProduct(url, title, price, description);
+    const { title, price, description } = statecadProd;
+    let file = fileUpload;
+    const data = new FormData();
+    data.append('url', file);
+    data.append('object', JSON.stringify(statecadProd));
+    await serviceCreateProduct(data, title, price, description);
   }
 
   useEffect(() => {
@@ -36,15 +43,15 @@ function User() {
   }, [navigate]);
 
   return (
-    <div className="style-user">
+    <form id="sendform" className="style-user" encType="multipart/form-data">
       <h3>Bem vindo: UserName</h3>
       <Input
-        type="text"
+        type="file"
         id="file"
         name="url"
         autoComplete="off"
-        placeholder="Insira uma url de imagem"
-        execFunction={ handleChange }
+        placeholder="Localize a imagem"
+        execFunction={ changeImage }
       />
       <Input
         type="text"
@@ -71,7 +78,7 @@ function User() {
         placeholder="Digite aqui a descrição do produto."
       />
       <Button title="Adicionar produto" execFunction={ handleClick } />
-    </div>
+    </form>
   )
 }
 

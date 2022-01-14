@@ -1,12 +1,21 @@
 import axios from 'axios'
 
-async function serviceCreateProduct(url, title, price, description) {
+async function serviceCreateProduct(formData, title, price, description) {
   try {
-    const { data } = await axios.post('http://localhost:3001/createproduct', {
-      url,
-      title,
-      price: Number(price),
-      description
+    // const { data } = await axios.post('http://localhost:3001/createproduct', url, {
+    //   headers: {
+    //     "Content-Type": "multipart/form-data;",
+    //   }
+    // });
+    const { data } = await axios({
+      method: 'POST',
+      url: 'http://localhost:3001/createproduct',
+      data: formData,
+      body: {
+        title,
+        price,
+        description
+      }
     });
     return data;
   } catch (error) {
