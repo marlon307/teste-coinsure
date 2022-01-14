@@ -4,11 +4,13 @@ Este Projeto consiste em uma plena comunicação entre frontEnd, backEnd e o ban
 
 <br>
 
+<div float="left">
 <img src="./images/Screenshot from 2022-01-14 11-47-16.png" width="150" height="150"/>
 <img src="./images/Screenshot from 2022-01-14 11-47-39.png" width="150" height="150"/>
 <img src="./images/Screenshot from 2022-01-14 11-48-27.png" width="150" height="150"/>
 <img src="./images/Screenshot from 2022-01-14 11-48-50.png" width="150" height="150"/>
 <img src="./images/Screenshot from 2022-01-14 11-41-06.png" width="150" height="150"/>
+</div>
 
 <br><br>
 
