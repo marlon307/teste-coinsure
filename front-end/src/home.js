@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import serviceGetAllProducts from './service/serviceGetAllProducts'
 import './styles/App.css';
 
-function home() {
+function Home() {
+  const [listproducts, setListProducts] = useState([]);
+
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const { products } = await serviceGetAllProducts()
+      setListProducts(products);
+    }
+    fetchProducts();
+  }, [])
+
   return (
     <main>
       <div className="info-store">
@@ -79,8 +91,21 @@ function home() {
           <p>Item para pescas desde o peixe pesado ate aos mais leves</p>
         </div>
       </div>
+      <div className="list-products">
+        { listproducts.map(({ id, url, title, price, description }) => (
+          <div key={ id } className="card">
+            <img src={ `http://localhost:3001/${url}` } alt={ title } />
+            <span>{ Number(price).toLocaleString('pt-br', {
+              style: 'currency',
+              currency: 'BRL',
+            }) }</span>
+            <h3>{ title }</h3>
+            <span>{ description }</span>
+          </div>
+        )) }
+      </div>
     </main>
   )
 }
 
-export default home;
+export default Home;

@@ -58,9 +58,12 @@ function Header({ stateLogin, execFunction }) {
         <div className="logmn">
           { stateLogin
             ?
-            <Link to="/" className="register" onClick={ handleClick }>
-              Sair
-            </Link>
+            <>
+              <Link to="/user" className="login">Conta</Link>
+              <Link to="/" className="register" onClick={ handleClick }>
+                Sair
+              </Link>
+            </>
             :
             <>
               <Link to="/login" className="login">Logar</Link>

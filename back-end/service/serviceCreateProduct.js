@@ -1,7 +1,8 @@
 const creatNewProduct = require('../models/modelcreatNewProduct')
 
-async function serviceRegisterUser(req, res) {
-  const { url, title, price, description } = req.body;
+async function serviceCreateProduct(req, res) {
+  const { title, price, description } = JSON.parse(req.body.object);
+  const url = `images/${req.file.filename}`;
 
   const result = await creatNewProduct({ url, title, price, description });
 
@@ -14,4 +15,4 @@ async function serviceRegisterUser(req, res) {
   return res.status(result.status).json(result);
 }
 
-module.exports = serviceRegisterUser;
+module.exports = serviceCreateProduct;

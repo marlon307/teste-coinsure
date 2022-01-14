@@ -2,16 +2,21 @@ import React, { useState, useEffect } from 'react';
 import Button from './components/ComponentsForm/Button';
 import Input from './components/ComponentsForm/Input';
 import { useNavigate } from 'react-router-dom';
+import serviceCreateProduct from './service/serviceCreateProduct'
 import './styles/user.css';
 
 function User() {
   const navigate = useNavigate();
+  const [fileUpload, setFileUpload] = useState({});
   const [statecadProd, setStatecadProd] = useState({
-    file: '',
     title: '',
-    price: '',
-    desc: ''
+    price: 0,
+    description: '',
   })
+
+  function changeImage({ target }) {
+    setFileUpload(target.files[0])
+  }
 
   function handleChange({ target }) {
     const { name, value } = target;
@@ -19,6 +24,15 @@ function User() {
       ...statecadProd,
       [name]: value
     });
+  }
+
+  async function handleClick() {
+    const { title, price, description } = statecadProd;
+    let file = fileUpload;
+    const data = new FormData();
+    data.append('url', file);
+    data.append('object', JSON.stringify(statecadProd));
+    await serviceCreateProduct(data, title, price, description);
   }
 
   useEffect(() => {
@@ -29,15 +43,15 @@ function User() {
   }, [navigate]);
 
   return (
-    <div className="style-user">
+    <form id="sendform" className="style-user" encType="multipart/form-data">
       <h3>Bem vindo: UserName</h3>
       <Input
         type="file"
         id="file"
-        name="file"
+        name="url"
         autoComplete="off"
-        placeholder="Escola uma imagem"
-        execFunction={ handleChange }
+        placeholder="Localize a imagem"
+        execFunction={ changeImage }
       />
       <Input
         type="text"
@@ -57,13 +71,14 @@ function User() {
       />
       <textarea
         className="desc"
-        name="desc"
+        name="description"
         id="desc"
         cols="57" rows="10"
+        onChange={ handleChange }
         placeholder="Digite aqui a descrição do produto."
       />
-      <Button title="Adicionar produto" />
-    </div>
+      <Button title="Adicionar produto" execFunction={ handleClick } />
+    </form>
   )
 }
 
