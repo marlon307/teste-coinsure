@@ -31,15 +31,35 @@ O arquivo <code>.env</code> esta neste repositório basta você color as informa
 
 <code>
 DB_NAME= Nome da database
+</code>
+
 <br>
+
+<code>
 DB_USER= Usuario do seu banco de dados
+</code>
+
 <br>
+
+<code>
 DB_PORT= A porta no qual sei banco de dados esta rodando
+</code>
+
 <br>
+
+<code>
 DB_PSW= Senha do banco de dados
+</code>
+
 <br>
+
+<code>
 DB_HOST= O ip do seu banco de dados
+</code>
+
 <br>
+
+<code>
 SECRET_KEY= E uma senha com 32 caracteres Ex: 3fw5*f/fddf%54308fg/*-df8049+-21
 </code>
 
