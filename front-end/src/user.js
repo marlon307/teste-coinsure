@@ -30,9 +30,9 @@ function User() {
   async function handleClick() {
     const { title, price, description } = statecadProd;
     let file = fileUpload;
-    if (fileUpload.name !== '' && title !== '' && title.length > 8
+    if (fileUpload.name !== '' && title !== '' && title.length >= 8
       && price !== ''
-      && description !== '' && description.length > 15) {
+      && description !== '' && description.length >= 15) {
 
       const data = new FormData();
       data.append('url', file);
@@ -94,7 +94,7 @@ function User() {
         value={ statecadProd.description }
         cols="57" rows="10"
         onChange={ handleChange }
-        placeholder="Digite aqui a descrição do produto. min 32 caracteres"
+        placeholder="Digite aqui a descrição do produto. min 15 caracteres"
       />
       <Button title="Adicionar produto" execFunction={ handleClick } />
       { stateerror && <span>Preencha todos os campos correctamente.</span> }
