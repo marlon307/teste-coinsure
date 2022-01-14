@@ -94,7 +94,7 @@ function Home() {
       <div className="list-products">
         { listproducts.map(({ id, url, title, price, description }) => (
           <div key={ id } className="card">
-            <img src={ url } alt={ title } />
+            <img src={ `http://localhost:3001/${url}` } alt={ title } />
             <span>{ Number(price).toLocaleString('pt-br', {
               style: 'currency',
               currency: 'BRL',
