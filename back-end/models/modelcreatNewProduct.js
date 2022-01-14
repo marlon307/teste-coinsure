@@ -1,4 +1,4 @@
-const knex = require('../knex/connection')
+const knex = require('../knex/connection');
 
 async function creatNewProduct(object) {
   try {

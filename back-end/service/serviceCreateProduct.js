@@ -3,7 +3,7 @@ const creatNewProduct = require('../models/modelcreatNewProduct')
 async function serviceCreateProduct(req, res) {
   const { title, price, description } = JSON.parse(req.body.object);
   const url = `images/${req.file.filename}`;
-
+  console.log(req);
   const result = await creatNewProduct({ url, title, price, description });
 
   if (!result.status) {
