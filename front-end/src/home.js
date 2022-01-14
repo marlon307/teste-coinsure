@@ -18,8 +18,7 @@ function Home() {
     <main>
       <div className="info-store">
         <h1>Fish Store</h1>
-        <p>A fish store é uma marca onde presa pela melhor pescaria de nossos clientes trazendo os melhores itnes para pesca
-          Fornecemos iscas anzois varas de pescas e carretilha e com garantia.</p>
+        <p>A fish store é onde você encontra de tudo melhor para sua pescaria, trazendo os melhores produtos para pesca Fornecemos iscas anzóis varas de pescas, carretilha e motores para embarcação.</p>
         <div className="cont-svg">
           <svg width="1065" height="799" viewBox="0 0 1065 799" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_714_73)">
@@ -88,7 +87,6 @@ function Home() {
               </clipPath>
             </defs>
           </svg>
-          <p>Item para pescas desde o peixe pesado ate aos mais leves</p>
         </div>
       </div>
       <div className="list-products">
