@@ -8,3 +8,8 @@
 .style-login h1 {
   margin-bottom: 1em;
 }
+
+.style-login p {
+  color: #e95050;
+  margin-top: 1em;
+}
