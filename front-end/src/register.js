@@ -3,9 +3,11 @@ import Button from './components/ComponentsForm/Button';
 import Input from './components/ComponentsForm/Input';
 import { useNavigate } from 'react-router-dom';
 import serviceRegisterUser from './service/serviceRegisterUser';
+import './styles/login.css';
 
 function Register({ execFunction }) {
   const navigate = useNavigate();
+  const [errormessage, setErrormessage] = useState(false);
   const [stateRegister, setStateRegister] = useState({
     name: '',
     email: '',
@@ -26,6 +28,7 @@ function Register({ execFunction }) {
     if (validEmail.test(email) && password.length >= 8 && name.length >= 8) {
 
       const fetchregisterUser = await serviceRegisterUser(name, email, password);
+      console.log(fetchregisterUser);
       if (fetchregisterUser.status === 200) {
 
         localStorage.setItem('fishstore', JSON.stringify({
@@ -34,6 +37,9 @@ function Register({ execFunction }) {
 
         execFunction(true);
         navigate('/user');
+        setErrormessage(false);
+      } else {
+        setErrormessage(true)
       }
     }
   }
@@ -45,6 +51,7 @@ function Register({ execFunction }) {
         <Input
           type="text"
           id="name"
+          value={ stateRegister.name }
           name="name"
           autoComplete="name"
           placeholder="Nome"
@@ -53,6 +60,7 @@ function Register({ execFunction }) {
         <Input
           type="email"
           id="email"
+          value={ stateRegister.email }
           name="email"
           placeholder="Email"
           autoComplete="off"
@@ -61,12 +69,14 @@ function Register({ execFunction }) {
         <Input
           type="password"
           id="psw"
+          value={ stateRegister.password }
           name="password"
           autoComplete="off"
           placeholder="Senha"
           execFunction={ handleChange }
         />
         <Button title="Registrar-se" execFunction={ handleClick } />
+        { errormessage && <p>Usuário já esta cadastrado!</p> }
       </form>
     </div>
   )

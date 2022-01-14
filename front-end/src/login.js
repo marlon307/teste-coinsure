@@ -6,6 +6,7 @@ import serviceLoginUser from './service/serviceLoginUser';
 import './styles/login.css';
 
 function Login({ execFunction }) {
+  const [errormessage, setErrormessage] = useState(false);
   const navigate = useNavigate();
   const [statelogin, setStateLogin] = useState({
     email: '',
@@ -32,6 +33,9 @@ function Login({ execFunction }) {
         }));
         execFunction(true);
         navigate('/user');
+        setErrormessage(false);
+      } else {
+        setErrormessage(true);
       }
     }
   }
@@ -44,6 +48,7 @@ function Login({ execFunction }) {
           type="email"
           id="email"
           name="email"
+          value={ statelogin.email }
           placeholder="Email"
           execFunction={ handleChange }
           autoComplete="email"
@@ -52,11 +57,13 @@ function Login({ execFunction }) {
           type="password"
           id="psw"
           name="password"
+          value={ statelogin.password }
           placeholder="Senha"
           execFunction={ handleChange }
           autoComplete="password"
         />
         <Button title="Logar" execFunction={ handleClick } />
+        { errormessage && <p>Email ou senha incorretos!</p> }
       </form>
     </div>
   )
