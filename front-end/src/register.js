@@ -28,9 +28,8 @@ function Register({ execFunction }) {
     if (validEmail.test(email) && password.length >= 8 && name.length >= 8) {
 
       const fetchregisterUser = await serviceRegisterUser(name, email, password);
-      console.log(fetchregisterUser);
-      if (fetchregisterUser.status === 200) {
 
+      if (fetchregisterUser.status === 200) {
         localStorage.setItem('fishstore', JSON.stringify({
           logged: true,
         }));
